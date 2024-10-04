@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="form-heading">My Blog</h1>
+        <a href="/new-post" class="new-btn">New Post</a>
+        <ul>
+            <% if(locals.posts){ %>
+
+                <% posts.forEach((post)=>{%>
+                    <li class="li-post">
+                        <h2><%= post.title %></h2>
+                        <small><%= post.date %></small>
+                        <p><%= post.content %></p>
+
+                        <div class="down-btn">
+                        <small><%= post.author %></small>
+                        <a href="/edit-post/<%= post.id %>" class="edit-btn">Edit</a>
+                        <a href="/delete-post/<%= post.id %>" class="delete-btn">Delete</a>
+                    </div>
+                        <hr>
+                    </li>
+              <% }) %>
+
+
+           <% }else{%>
+            <h2><%= err %></h2>
+         <%  } %> 
+            
+        </ul>
+    </div>
+</body>
+</html>
+
